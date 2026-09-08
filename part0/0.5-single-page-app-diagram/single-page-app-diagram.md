@@ -1,4 +1,4 @@
-# Single Page App Diagram
+# 0.5: Single Page App Diagram
 
 ```mermaid
 sequenceDiagram
