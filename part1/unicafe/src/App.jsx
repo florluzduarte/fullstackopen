@@ -12,29 +12,33 @@ const Statistics = ({ title, texts, good, bad, neutral }) => {
   const averageValue = feedbackTotal === 0 ? 0 : feedbackTotal / total;
   const positivePercentage = (good * 100) / total;
 
-  return (
-    <>
-      <Header title={title} />
-      <p>
-        {texts.good}: {good}
-      </p>
-      <p>
-        {texts.neutral}: {neutral}
-      </p>
-      <p>
-        {texts.bad}: {bad}
-      </p>
-      <p>
-        {texts.all}: {total}
-      </p>
-      <p>
-        {texts.average}: {averageValue}
-      </p>
-      <p>
-        {texts.positive}: {positivePercentage}%
-      </p>
-    </>
-  );
+  if (total === 0) {
+    return <p>No feedback given</p>;
+  } else {
+    return (
+      <>
+        <Header title={title} />
+        <p>
+          {texts.good}: {good}
+        </p>
+        <p>
+          {texts.neutral}: {neutral}
+        </p>
+        <p>
+          {texts.bad}: {bad}
+        </p>
+        <p>
+          {texts.all}: {total}
+        </p>
+        <p>
+          {texts.average}: {averageValue}
+        </p>
+        <p>
+          {texts.positive}: {positivePercentage}%
+        </p>
+      </>
+    );
+  }
 };
 
 const App = () => {
