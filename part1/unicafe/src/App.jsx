@@ -2,15 +2,29 @@ import { useState } from "react";
 
 const Header = ({ title }) => <h1>{title}</h1>;
 
-const FeedbackButton = ({ text, onClick }) => (
-  <button onClick={onClick}>{text}</button>
-);
+const Button = ({ text, onClick }) => <button onClick={onClick}>{text}</button>;
+
+const StatisticLine = ({ text, value }) => {
+  if (text === "Positive") {
+    return (
+      <p>
+        {text}: {value} %
+      </p>
+    );
+  } else {
+    return (
+      <p>
+        {text}: {value}
+      </p>
+    );
+  }
+};
 
 const Statistics = ({ title, texts, good, bad, neutral }) => {
   const total = good + bad + neutral;
   const feedbackTotal = good * 1 + bad * -1 + neutral * 0;
-  const averageValue = feedbackTotal === 0 ? 0 : feedbackTotal / total;
-  const positivePercentage = (good * 100) / total;
+  const average = feedbackTotal === 0 ? 0 : feedbackTotal / total;
+  const percentage = (good * 100) / total;
 
   if (total === 0) {
     return <p>No feedback given</p>;
@@ -18,24 +32,12 @@ const Statistics = ({ title, texts, good, bad, neutral }) => {
     return (
       <>
         <Header title={title} />
-        <p>
-          {texts.good}: {good}
-        </p>
-        <p>
-          {texts.neutral}: {neutral}
-        </p>
-        <p>
-          {texts.bad}: {bad}
-        </p>
-        <p>
-          {texts.all}: {total}
-        </p>
-        <p>
-          {texts.average}: {averageValue}
-        </p>
-        <p>
-          {texts.positive}: {positivePercentage}%
-        </p>
+        <StatisticLine text={texts.good} value={good} />
+        <StatisticLine text={texts.neutral} value={neutral} />
+        <StatisticLine text={texts.bad} value={bad} />
+        <StatisticLine text={texts.all} value={total} />
+        <StatisticLine text={texts.average} value={average} />
+        <StatisticLine text={texts.percentage} value={percentage} />
       </>
     );
   }
@@ -56,7 +58,7 @@ const App = () => {
     neutral: "Neutral",
     all: "All",
     average: "Average",
-    positive: "Positive",
+    percentage: "Positive",
   };
 
   const handleGood = () => setGood(good + 1);
@@ -66,9 +68,9 @@ const App = () => {
   return (
     <>
       <Header title={appTitle} />
-      <FeedbackButton text={texts.good} onClick={handleGood} />
-      <FeedbackButton text={texts.neutral} onClick={handleNeutral} />
-      <FeedbackButton text={texts.bad} onClick={handleBad} />
+      <Button text={texts.good} onClick={handleGood} />
+      <Button text={texts.neutral} onClick={handleNeutral} />
+      <Button text={texts.bad} onClick={handleBad} />
       <Statistics
         title={statistics}
         texts={texts}
