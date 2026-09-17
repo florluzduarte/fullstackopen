@@ -6,20 +6,36 @@ const FeedbackButton = ({ text, onClick }) => (
   <button onClick={onClick}>{text}</button>
 );
 
-const Statistics = ({ title, texts, good, bad, neutral }) => (
-  <>
-    <Header title={title} />
-    <p>
-      {texts.good}: {good}
-    </p>
-    <p>
-      {texts.neutral}: {neutral}
-    </p>
-    <p>
-      {texts.bad}: {bad}
-    </p>
-  </>
-);
+const Statistics = ({ title, texts, good, bad, neutral }) => {
+  const total = good + bad + neutral;
+  const feedbackTotal = good * 1 + bad * -1 + neutral * 0;
+  const averageValue = feedbackTotal === 0 ? 0 : feedbackTotal / total;
+  const positivePercentage = (good * 100) / total;
+
+  return (
+    <>
+      <Header title={title} />
+      <p>
+        {texts.good}: {good}
+      </p>
+      <p>
+        {texts.neutral}: {neutral}
+      </p>
+      <p>
+        {texts.bad}: {bad}
+      </p>
+      <p>
+        {texts.all}: {total}
+      </p>
+      <p>
+        {texts.average}: {averageValue}
+      </p>
+      <p>
+        {texts.positive}: {positivePercentage}%
+      </p>
+    </>
+  );
+};
 
 const App = () => {
   // save clicks of each button to its own state
@@ -30,10 +46,13 @@ const App = () => {
   const appTitle = "Give Feedback";
   const statistics = "Statistics";
 
-  const btnTexts = {
+  const texts = {
     good: "Good",
     bad: "Bad",
     neutral: "Neutral",
+    all: "All",
+    average: "Average",
+    positive: "Positive",
   };
 
   const handleGood = () => setGood(good + 1);
@@ -43,12 +62,12 @@ const App = () => {
   return (
     <>
       <Header title={appTitle} />
-      <FeedbackButton text={btnTexts.good} onClick={handleGood} />
-      <FeedbackButton text={btnTexts.neutral} onClick={handleNeutral} />
-      <FeedbackButton text={btnTexts.bad} onClick={handleBad} />
+      <FeedbackButton text={texts.good} onClick={handleGood} />
+      <FeedbackButton text={texts.neutral} onClick={handleNeutral} />
+      <FeedbackButton text={texts.bad} onClick={handleBad} />
       <Statistics
         title={statistics}
-        texts={btnTexts}
+        texts={texts}
         good={good}
         bad={bad}
         neutral={neutral}
