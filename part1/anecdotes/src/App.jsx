@@ -15,7 +15,7 @@ const App = () => {
   const [selected, setSelected] = useState(0);
 
   const handleClick = () => {
-    const randomNumber = Math.floor(Math.random() * (7 - 0 + 1) + 0);
+    const randomNumber = Math.floor(Math.random() * anecdotes.length);
     setSelected(randomNumber);
   };
 
