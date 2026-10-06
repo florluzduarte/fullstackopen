@@ -37,9 +37,28 @@ const App = () => {
         setNewNumber("");
       });
     } else {
-      alert(`${newPerson.name} is already added to phonebook`);
-      setNewName("");
-      setNewNumber("");
+      if (
+        confirm(
+          `${newPerson.name} is already added to phonebook, replace the old number with a new one?`,
+        )
+      ) {
+        const changedPerson = { ...isNew, number: newPerson.number };
+        personsService
+          .update(isNew.id, changedPerson)
+          .then((resp) => {
+            setPersons(
+              persons.map((p) => (p.id === resp.id ? changedPerson : p)),
+            );
+            setNewName("");
+            setNewNumber("");
+          })
+          .catch(() => {
+            alert(`${isNew.name} was already deleted from server`);
+            setPersons(persons.filter((p) => p.id !== isNew.id));
+            setNewName("");
+            setNewNumber("");
+          });
+      }
     }
   };
 
