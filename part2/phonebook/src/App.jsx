@@ -51,6 +51,20 @@ const App = () => {
     setNewNumber(event.target.value);
   };
 
+  const handleDelete = (person) => {
+    personsService
+      .deletePerson(person.id)
+      .then(() => {
+        confirm(`Delete ${person.name}?`)
+          ? setPersons(persons.filter((p) => p.id !== person.id))
+          : "";
+      })
+      .catch(() => {
+        alert(`the note '${person.name}' was already deleted from server`);
+        setPersons(persons.filter((p) => p.id !== person.id));
+      });
+  };
+
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     const filterResults = persons.filter((person) =>
@@ -80,7 +94,11 @@ const App = () => {
         newNumber={newNumber}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} searchResults={searchResults} />
+      <Persons
+        persons={persons}
+        searchResults={searchResults}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };
