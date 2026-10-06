@@ -1,16 +1,13 @@
-# React + Vite
+# Phonebook App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- phonebook
+  - 2.6: The Phonebook Step 1 --> Create phonebook app
+  - 2.7: The Phonebook Step 2 --> Add new names to phonebook
+  - 2.8: The Phonebook Step 3 --> Allow users to add phone numbers to new entries
+  - 2.9\*: The Phonebook Step 4 --> Implement a search field
+  - 2.10: The Phonebook Step 5 --> Refactor and create reusable components
+  - 2.11: The Phonebook Step 6 --> Get initial data from server
+  - 2.12: The Phonebook step 7 --> Save new entries to backend
+  - 2.13: The Phonebook step 8 --> Create backend communication module
+  - 2.14: The Phonebook step 9 --> Delete entries from phonebook
+  - 2.15\*: The Phonebook step 10 --> Replace old phone number
