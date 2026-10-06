@@ -24,7 +24,6 @@ const App = () => {
     const newPerson = {
       name: newName,
       number: newNumber,
-      id: new Date().toString(),
     };
 
     const isNew = persons.find(
@@ -32,9 +31,11 @@ const App = () => {
     );
 
     if (isNew === undefined) {
-      setPersons(persons.concat(newPerson));
-      setNewName("");
-      setNewNumber("");
+      axios.post("http://localhost:3001/persons", newPerson).then(() => {
+        setPersons(persons.concat(newPerson));
+        setNewName("");
+        setNewNumber("");
+      });
     } else {
       alert(`${newPerson.name} is already added to phonebook`);
       setNewName("");
