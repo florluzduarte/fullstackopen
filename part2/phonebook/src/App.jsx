@@ -12,7 +12,13 @@ const App = () => {
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [notification, setNotification] = useState(null);
+
+  const notificationInitialState = {
+    message: null,
+    type: "message",
+  };
+
+  const [notification, setNotification] = useState(notificationInitialState);
 
   useEffect(() => {
     personsService
@@ -33,9 +39,9 @@ const App = () => {
     );
 
     if (isNew === undefined) {
-      setNotification(`Added ${newPerson.name}`);
+      setNotification({ message: `Added ${newPerson.name}`, type: "message" });
       setTimeout(() => {
-        setNotification(null);
+        setNotification(notificationInitialState);
       }, 1500);
       personsService.create(newPerson).then((data) => {
         setPersons(persons.concat(data));
@@ -52,9 +58,12 @@ const App = () => {
         personsService
           .update(isNew.id, changedPerson)
           .then((resp) => {
-            setNotification(`Phone number updated: ${isNew.name}`);
+            setNotification({
+              message: `Phone number updated: ${isNew.name}`,
+              type: "message",
+            });
             setTimeout(() => {
-              setNotification(null);
+              setNotification(notificationInitialState);
             }, 2000);
             setPersons(
               persons.map((p) => (p.id === resp.id ? changedPerson : p)),
@@ -63,7 +72,13 @@ const App = () => {
             setNewNumber("");
           })
           .catch(() => {
-            alert(`${isNew.name} was already deleted from server`);
+            setNotification({
+              message: `${isNew.name} was already deleted from server`,
+              type: "error",
+            });
+            setTimeout(() => {
+              setNotification(notificationInitialState);
+            }, 2000);
             setPersons(persons.filter((p) => p.id !== isNew.id));
             setNewName("");
             setNewNumber("");
@@ -89,7 +104,13 @@ const App = () => {
           : "";
       })
       .catch(() => {
-        alert(`the note '${person.name}' was already deleted from server`);
+        setNotification({
+          message: `Information of '${person.name}' has already been removed from server`,
+          type: "error",
+        });
+        setTimeout(() => {
+          setNotification(notificationInitialState);
+        }, 2000);
         setPersons(persons.filter((p) => p.id !== person.id));
       });
   };
@@ -109,7 +130,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <Notification message={notification} />
+      <Notification message={notification.message} type={notification.type} />
       <Filter
         handleSearch={handleSearch}
         handleSearchSubmit={handleSearchSubmit}
