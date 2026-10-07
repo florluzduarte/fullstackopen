@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import personsService from "./services/persons";
 
 import Filter from "./components/Filter";
+import Notification from "./components/Notification";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 
@@ -11,6 +12,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     personsService
@@ -31,6 +33,10 @@ const App = () => {
     );
 
     if (isNew === undefined) {
+      setNotification(`Added ${newPerson.name}`);
+      setTimeout(() => {
+        setNotification(null);
+      }, 1500);
       personsService.create(newPerson).then((data) => {
         setPersons(persons.concat(data));
         setNewName("");
@@ -46,6 +52,10 @@ const App = () => {
         personsService
           .update(isNew.id, changedPerson)
           .then((resp) => {
+            setNotification(`Phone number updated: ${isNew.name}`);
+            setTimeout(() => {
+              setNotification(null);
+            }, 2000);
             setPersons(
               persons.map((p) => (p.id === resp.id ? changedPerson : p)),
             );
@@ -99,6 +109,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification message={notification} />
       <Filter
         handleSearch={handleSearch}
         handleSearchSubmit={handleSearchSubmit}
