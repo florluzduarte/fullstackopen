@@ -11,3 +11,5 @@
   - 2.13: The Phonebook step 8 --> Create backend communication module
   - 2.14: The Phonebook step 9 --> Delete entries from phonebook
   - 2.15\*: The Phonebook step 10 --> Replace old phone number
+  - 2.16: Phonebook step 11 --> Add Notification component
+  - 2.17\*: Phonebook step 12 --> Handle errors on delete
