@@ -47,3 +47,5 @@
   - 2.15\*: The Phonebook step 10 --> Replace old phone number
   - 2.16: Phonebook step 11 --> Add Notification component
   - 2.17\*: Phonebook step 12 --> Handle errors on delete
+- countries
+  - 2.18\* Data for countries, step 1 --> Connect API + Display list of filtered countries
