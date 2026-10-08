@@ -1,6 +1,6 @@
 const Search = ({ handleSearch }) => {
   return (
-    <form action="">
+    <form onSubmit={handleSearch}>
       find countries <input type="text" onChange={handleSearch} />
     </form>
   );
