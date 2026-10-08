@@ -6,7 +6,7 @@ import Search from "./components/Search";
 function App() {
   const [countries, setCountries] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredCountries, setFilteredCountried] = useState(null);
+  const [filteredCountries, setFilteredCountries] = useState(null);
 
   useEffect(() => {
     axios
@@ -15,11 +15,15 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleSelectCountry = (country) => {
+    setFilteredCountries([country]);
+  };
+
   const handleSearch = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     if (countries) {
-      setFilteredCountried(
+      setFilteredCountries(
         countries.filter((country) =>
           country.name.common.toLowerCase().includes(event.target.value),
         ),
@@ -38,7 +42,11 @@ function App() {
   return (
     <>
       <Search handleSearch={handleSearch} />
-      <Message countryCount={countryCount} countries={filteredCountries} />
+      <Message
+        countryCount={countryCount}
+        countries={filteredCountries}
+        handleSelectCountry={handleSelectCountry}
+      />
     </>
   );
 }

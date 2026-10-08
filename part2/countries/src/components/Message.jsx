@@ -1,11 +1,14 @@
-const Message = ({ countryCount, countries }) => {
+const Message = ({ countryCount, countries, handleSelectCountry }) => {
   if (countryCount > 10) {
     return <p>Too many matches, specify another filter</p>;
   } else if (countryCount <= 10 && countryCount >= 2) {
     return (
       <>
         {countries.map((country) => (
-          <p key={country.flag}>{country.name.common}</p>
+          <p key={country.flag}>
+            {country.name.common}{" "}
+            <button onClick={() => handleSelectCountry(country)}>Show</button>
+          </p>
         ))}
       </>
     );
@@ -20,7 +23,7 @@ const Message = ({ countryCount, countries }) => {
             <h2>Languages</h2>
             <ul>
               {Object.values(country.languages).map((language) => (
-                <li>{language}</li>
+                <li key={language}>{language}</li>
               ))}
             </ul>
             <h2>Flag</h2>
