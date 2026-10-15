@@ -8,3 +8,4 @@
   - 3.5: Phonebook backend step 5 --> Create POST /api/persons route for adding new phonebook entries\
   - 3.6: Phonebook backend step 6 --> POST /api/persons error handling
   - 3.7: Phonebook backend step 7 --> Add Morgan with _tiny_ config
+  - 3.8\*: Phonebook backend step 8 --> Morgan config to log POST requests
