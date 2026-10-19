@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/persons
+POST https://phonebook-empty-horizon-3209.fly.dev/api/persons
 content-type: application/json
 
 {
