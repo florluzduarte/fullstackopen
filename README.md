@@ -66,3 +66,4 @@
   - 3.9 Phonebook backend step 9 --> Connect with frontend app from Part 2
   - 3.10 Phonebook backend step 10 --> Deploy phonebook API with fly.io --> https://phonebook-empty-horizon-3209.fly.dev/
   - 3.11 Full Stack Phonebook --> Fullstack version + local dev environment working
+  - 3.12: Command-line database --> Add connection to MongoDB for adding entries to the phonebook
