@@ -69,3 +69,4 @@
   - 3.12: Command-line database --> Add connection to MongoDB for adding entries to the phonebook
   - 3.13: Phonebook database, step 1 --> Get all entries from MongoDB instance + person model module
   - 3.14: Phonebook database, step 2 --> Add new entries to MongoDB instance
+  - 3.15: Phonebook database, step 3 --> Delete entries from MongoDB instance
