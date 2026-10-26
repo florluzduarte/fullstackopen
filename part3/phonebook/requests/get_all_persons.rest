@@ -1,1 +1,1 @@
-GET https://phonebook-empty-horizon-3209.fly.dev/api/persons
+GET http://localhost:3001/api/persons
