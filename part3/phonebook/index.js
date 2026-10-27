@@ -1,11 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
 const app = express();
 const Person = require("./models/person");
 
-app.use(cors());
 app.use(express.static("dist"));
 app.use(express.json());
 
@@ -40,14 +38,18 @@ app.get("/info", (request, response) => {
   response.send(htmlResponse);
 });
 
-app.get("/api/persons/:id", (request, response) => {
+app.get("/api/persons/:id", (request, response, next) => {
   const id = request.params.id;
-  const person = persons.find((person) => person.id === id);
-  if (person) {
-    response.json(person);
-  } else {
-    response.status(404).end();
-  }
+
+  Person.findById(id)
+    .then((personFound) => {
+      if (personFound) {
+        response.json(personFound);
+      } else {
+        response.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
 });
 
 app.delete("/api/persons/:id", (request, response, next) => {
@@ -56,7 +58,7 @@ app.delete("/api/persons/:id", (request, response, next) => {
     .then((result) => {
       response.status(204).end();
     })
-    .catch((error) => console.log(error.message));
+    .catch((error) => next(error));
 });
 
 app.post("/api/persons", (request, response) => {
@@ -84,7 +86,24 @@ app.post("/api/persons", (request, response) => {
   });
 });
 
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: "404 - Not Found" });
+};
+
+app.use(unknownEndpoint);
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message);
+  if (error.name === "CastError") {
+    return response.status(400).send({ error: "Malformatted ID" });
+  }
+  next(error);
+};
+
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
