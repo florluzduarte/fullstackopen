@@ -32,10 +32,15 @@ app.get("/api/persons", (request, response) => {
   });
 });
 
-app.get("/info", (request, response) => {
+app.get("/info", (request, response, next) => {
   const now = new Date().toString();
-  const htmlResponse = `<p>Phonebook has info for ${persons.length} people</p> <p>${now}</p>`;
-  response.send(htmlResponse);
+  Person.find({})
+    .then((result) => {
+      const count = result.length;
+      const htmlResponse = `<p>Phonebook has info for ${count} people</p> <p>${now}</p>`;
+      response.send(htmlResponse);
+    })
+    .catch((error) => next(error));
 });
 
 app.get("/api/persons/:id", (request, response, next) => {
