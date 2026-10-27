@@ -1,7 +1,7 @@
-POST https://phonebook-empty-horizon-3209.fly.dev/api/persons
+POST http://localhost:3001/api/persons
 content-type: application/json
 
 {
-    "name": "John Doe",
-    "number": "39-23-1111111"
+    "name": "Anna",
+    "number": "0000-1111111"
 }

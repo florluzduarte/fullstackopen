@@ -17,3 +17,4 @@
   - 3.14: Phonebook database, step 2 --> Add new entries to MongoDB instance
   - 3.15: Phonebook database, step 3 --> Delete entries from MongoDB instance
   - 3.16: Phonebook database, step 4 --> Add error handler middleware
+  - 3.17\*: Phonebook database, step 5 --> Add PUT endpoint for updating existing contacts

@@ -1,1 +1,1 @@
-DELETE https://phonebook-empty-horizon-3209.fly.dev/api/persons/2
+DELETE http://localhost:3001/api/persons/6ae0bd0cb27cb3299e9d87fb

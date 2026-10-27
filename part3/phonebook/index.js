@@ -63,26 +63,48 @@ app.delete("/api/persons/:id", (request, response, next) => {
 
 app.post("/api/persons", (request, response) => {
   const body = request.body;
+  const { name, number } = body;
 
-  if (!body.name || !body.number) {
+  if (!name || !number) {
     return response.status(400).json({
       error: "content missing",
     });
   }
 
-  // if (findMatch(body.name)) {
-  //   return response.status(400).json({
-  //     error: "name must be unique",
-  //   });
-  // }
+  const checkMatch = Person.find({ name: name }).exec();
 
-  const person = new Person({
-    name: body.name,
-    number: body.number,
+  checkMatch.then((result) => {
+    if (result.length === 0) {
+      const person = new Person({
+        name: name,
+        number: number,
+      });
+
+      person.save().then((savedPerson) => {
+        response.json(savedPerson);
+      });
+    }
   });
+});
 
-  person.save().then((savedPerson) => {
-    response.json(savedPerson);
+app.put("/api/persons/:id", (request, response) => {
+  const id = request.params.id;
+  const { name, number } = request.body;
+
+  Person.findById(id).then((personFound) => {
+    if (!personFound) {
+      return response.status(404).end();
+    }
+
+    personFound.name = name;
+    personFound.number = number;
+
+    return personFound
+      .save()
+      .then((updatedPerson) => {
+        response.json(updatedPerson);
+      })
+      .catch((error) => next(error));
   });
 });
 
