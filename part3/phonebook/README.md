@@ -1,6 +1,6 @@
 # Phonebook API
 
-- phonebook: 🌐 Deploy --> https://phonebook-empty-horizon-3209.fly.dev/
+- phonebook: 🌐 Deploy --> https://fso-phonebook-nng5.onrender.com/
   - 3.1: Phonebook backend step 1 --> Create Express app + GET api/persons route
   - 3.2: Phonebook backend step 2 --> Create GET /info API route
   - 3.3: Phonebook backend step 3 --> Create GET /api/persons/id for displaying the information for a single phonebook entry
@@ -10,7 +10,7 @@
   - 3.7: Phonebook backend step 7 --> Add Morgan with _tiny_ config
   - 3.8\*: Phonebook backend step 8 --> Morgan config to log POST requests
   - 3.9 Phonebook backend step 9 --> Connect with frontend app from Part 2
-  - 3.10 Phonebook backend step 10 --> Deploy phonebook API with fly.io --> https://phonebook-empty-horizon-3209.fly.dev/
+  - 3.10 Phonebook backend step 10 --> Deploy phonebook API with fly.io --> https://fso-phonebook-nng5.onrender.com/
   - 3.11 Full Stack Phonebook --> Fullstack version + local dev environment working
   - 3.12: Command-line database --> Add connection to MongoDB for adding entries to the phonebook
   - 3.13: Phonebook database, step 1 --> Get all entries from MongoDB instance + person model module
