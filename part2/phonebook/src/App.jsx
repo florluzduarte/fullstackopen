@@ -43,11 +43,22 @@ const App = () => {
       setTimeout(() => {
         setNotification(notificationInitialState);
       }, 1500);
-      personsService.create(newPerson).then((data) => {
-        setPersons(persons.concat(data));
-        setNewName("");
-        setNewNumber("");
-      });
+      personsService
+        .create(newPerson)
+        .then((data) => {
+          setPersons(persons.concat(data));
+          setNewName("");
+          setNewNumber("");
+        })
+        .catch((error) => {
+          setNotification({
+            message: `${newPerson.name} is shorter than the minimum allowed 3 characters`,
+            type: "error",
+          });
+          setTimeout(() => {
+            setNotification(notificationInitialState);
+          }, 2000);
+        });
     } else {
       if (
         confirm(

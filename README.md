@@ -73,3 +73,4 @@
   - 3.16: Phonebook database, step 4 --> Add error handler middleware
   - 3.17\*: Phonebook database, step 5 --> Add PUT endpoint for updating existing contacts
   - 3.18\*: Phonebook database step 6 --> Fix /info and /api/persons/:id endpoints to work with MongoDB
+  - 3.19\*: Phonebook database, step 7 --> Add validations for new entries
