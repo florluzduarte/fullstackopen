@@ -90,7 +90,9 @@ app.post("/api/persons", (request, response, next) => {
         .then((savedPerson) => {
           response.json(savedPerson);
         })
-        .catch((error) => next(error));
+        .catch((error) => {
+          next(error);
+        });
     }
   });
 });
@@ -103,6 +105,7 @@ app.put("/api/persons/:id", (request, response, next) => {
     { _id: id },
     { name: name, number: number },
     {
+      runValidators: true,
       returnDocument: "after",
     },
   )

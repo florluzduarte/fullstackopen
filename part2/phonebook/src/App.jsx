@@ -51,13 +51,37 @@ const App = () => {
           setNewNumber("");
         })
         .catch((error) => {
-          setNotification({
-            message: `${newPerson.name} is shorter than the minimum allowed 3 characters`,
-            type: "error",
-          });
-          setTimeout(() => {
-            setNotification(notificationInitialState);
-          }, 2000);
+          if (
+            error.response.data.error.includes(
+              "Person validation failed: number",
+            )
+          ) {
+            setNotification({
+              message: `${newPerson.number} is not a valid phone number! Eg: 11-1111111 or 111-1111111`,
+              type: "error",
+            });
+            setTimeout(() => {
+              setNotification(notificationInitialState);
+            }, 2000);
+          } else if (
+            error.response.data.error.includes("Person validation failed: name")
+          ) {
+            setNotification({
+              message: `${newPerson.name} is shorter than the minimum allowed 3 characters`,
+              type: "error",
+            });
+            setTimeout(() => {
+              setNotification(notificationInitialState);
+            }, 2000);
+          } else {
+            setNotification({
+              message: "Name or number missing",
+              type: "error",
+            });
+            setTimeout(() => {
+              setNotification(notificationInitialState);
+            }, 2000);
+          }
         });
     } else {
       if (
@@ -82,17 +106,29 @@ const App = () => {
             setNewName("");
             setNewNumber("");
           })
-          .catch(() => {
-            setNotification({
-              message: `${isNew.name} was already deleted from server`,
-              type: "error",
-            });
-            setTimeout(() => {
-              setNotification(notificationInitialState);
-            }, 2000);
-            setPersons(persons.filter((p) => p.id !== isNew.id));
-            setNewName("");
-            setNewNumber("");
+          .catch((error) => {
+            if (
+              error.response.data.error.includes("Validation failed: number")
+            ) {
+              setNotification({
+                message: `${newPerson.number} is not a valid phone number! Eg: 11-1111111 or 111-1111111`,
+                type: "error",
+              });
+              setTimeout(() => {
+                setNotification(notificationInitialState);
+              }, 2000);
+            } else {
+              setNotification({
+                message: `${isNew.name} was already deleted from server`,
+                type: "error",
+              });
+              setTimeout(() => {
+                setNotification(notificationInitialState);
+              }, 2000);
+              setPersons(persons.filter((p) => p.id !== isNew.id));
+              setNewName("");
+              setNewNumber("");
+            }
           });
       }
     }
