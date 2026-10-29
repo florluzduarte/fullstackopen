@@ -39,13 +39,16 @@ const App = () => {
     );
 
     if (isNew === undefined) {
-      setNotification({ message: `Added ${newPerson.name}`, type: "message" });
-      setTimeout(() => {
-        setNotification(notificationInitialState);
-      }, 1500);
       personsService
         .create(newPerson)
         .then((data) => {
+          setNotification({
+            message: `Added ${newPerson.name}`,
+            type: "message",
+          });
+          setTimeout(() => {
+            setNotification(notificationInitialState);
+          }, 1500);
           setPersons(persons.concat(data));
           setNewName("");
           setNewNumber("");
