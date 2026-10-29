@@ -21,3 +21,5 @@
   - 3.18\*: Phonebook database step 6 --> Fix /info and /api/persons/:id endpoints to work with MongoDB
   - 3.19\*: Phonebook database, step 7 --> Add validations for new entries
   - 3.20\*: Phonebook database, step 8 --> Add phone number validation for new and updated entries
+  - 3.21 Deploying the database backend to production --> Change Fly.io for Render
+  - 3.22: Lint configuration --> Add ESLint + config
