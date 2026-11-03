@@ -52,7 +52,7 @@
   - 2.19\*: Data for countries, step 2 --> Add show button
   - 2.20\*: Data for countries, step 3 --> Add weather API data
 
-# Part 3
+## Part 3
 
 - phonebook: 🌐 Deploy --> https://fso-phonebook-nng5.onrender.com/
   - 3.1: Phonebook backend step 1 --> Create Express app + GET api/persons route
@@ -77,3 +77,8 @@
   - 3.20\*: Phonebook database, step 8 --> Add phone number validation for new and updated entries
   - 3.21 Deploying the database backend to production --> Change Fly.io for Render
   - 3.22: Lint configuration --> Add ESLint + config
+
+## Part 4
+
+- bloglist
+  - 4.1 Blog List, step 1 --> Backend initial config
