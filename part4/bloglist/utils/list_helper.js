@@ -14,4 +14,26 @@ const totalLikes = (blogs) => {
   }
 };
 
-module.exports = { dummy, totalLikes };
+const favoriteBlog = (blogs) => {
+  let max = [];
+  if (blogs.length === 0) {
+    return {};
+  } else {
+    max.push(blogs[0]);
+  }
+
+  blogs.map((blog) => {
+    if (blog.likes >= max[0].likes) {
+      max = [blog];
+    }
+  });
+  blogs.map((blog) => {
+    if (blog.likes >= max[0].likes) {
+      max = [blog];
+    }
+  });
+
+  return max[0];
+};
+
+module.exports = { dummy, totalLikes, favoriteBlog };
