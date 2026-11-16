@@ -55,4 +55,19 @@ const mostBlogs = (blogs) => {
   };
 };
 
-module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs };
+const mostLikes = (blogs) => {
+  const grouped = _.groupBy(blogs, 'author');
+  const nameAndCount = Object.keys(grouped).map((item, i) => {
+    let count = 0;
+    const temp = Object.entries(grouped)[i][1];
+    temp.map((it) => (count += it.likes));
+    return {
+      author: item,
+      likes: count,
+    };
+  });
+
+  return favoriteBlog(nameAndCount);
+};
+
+module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes };

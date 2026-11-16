@@ -8,33 +8,33 @@
 
 ## Part 1
 
-- courseInformation
+- **courseInformation**
   - 1.1: Course Information, step 1
   - 1.2: Course Information, step 2
   - 1.3: Course Information step 3
   - 1.4: Course Information step 4
   - 1.5: Course Information step 5
-- unicafe
+- **unicafe**
   - 1.6: unicafe step 1
   - 1.7: unicafe step 2
   - 1.8: unicafe step 3
   - 1.9: unicafe step 4
   - 1.10: unicafe step 5
   - 1.11\*: unicafe step 6
-- anecdotes
+- **anecdotes**
   - 1.12\*: anecdotes step 1
   - 1.13\*: anecdotes step 2
   - 1.14\*: anecdotes step 3
 
 ## Part 2
 
-- courseInformation
+- **courseInformation**
   - 2.1: Course information step 6
   - 2.2: Course information step 7
   - 2.3\*: Course information step 8
   - 2.4: Course information step 9
   - 2.5: Separate module step 10
-- phonebook
+- **phonebook**
   - 2.6: The Phonebook Step 1 --> Create phonebook app
   - 2.7: The Phonebook Step 2 --> Add new names to phonebook
   - 2.8: The Phonebook Step 3 --> Allow users to add phone numbers to new entries
@@ -47,14 +47,14 @@
   - 2.15\*: The Phonebook step 10 --> Replace old phone number
   - 2.16: Phonebook step 11 --> Add Notification component
   - 2.17\*: Phonebook step 12 --> Handle errors on delete
-- countries
+- **countries**
   - 2.18\* Data for countries, step 1 --> Connect API + Display list of filtered countries
   - 2.19\*: Data for countries, step 2 --> Add show button
   - 2.20\*: Data for countries, step 3 --> Add weather API data
 
 ## Part 3
 
-- phonebook: 🌐 Deploy --> https://fso-phonebook-nng5.onrender.com/
+- **phonebook:** 🌐 Deploy --> https://fso-phonebook-nng5.onrender.com/
   - 3.1: Phonebook backend step 1 --> Create Express app + GET api/persons route
   - 3.2: Phonebook backend step 2 --> Create GET /info API route
   - 3.3: Phonebook backend step 3 --> Create GET /api/persons/id for displaying the information for a single phonebook entry
@@ -80,10 +80,11 @@
 
 ## Part 4
 
-- bloglist
+- **bloglist**
   - 4.1 Blog List, step 1 --> Backend initial config
   - 4.2 Blog List, step 2 --> Setup backend structure
   - 4.3: Helper Functions and Unit Tests, step 1 --> Configure testing environment
   - 4.4: Helper Functions and Unit Tests, step 2 --> totalLikes tests
   - 4.5\*: Helper Functions and Unit Tests, step 3 --> favoriteBlog tests
   - 4.6\*: Helper Functions and Unit Tests, step 4 --> mostBlogs tests
+  - 4.7\*: Helper Functions and Unit Tests, step 5 --> mostLikes tests
